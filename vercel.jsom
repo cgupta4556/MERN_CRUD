@@ -1,0 +1,18 @@
+// filepath: /C:/Users/Chandan Gupta/Desktop/MERN-STACK-master/vercel.json
+{
+  "builds": [
+    {
+      "src": "client/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "build"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/client/build/$1"
+    }
+  ]
+}

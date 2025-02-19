@@ -1,3 +1,4 @@
+// filepath: /C:/Users/Chandan Gupta/Desktop/MERN-STACK-master/netlify.toml
 [build]
   base = "client"
   publish = "build"
