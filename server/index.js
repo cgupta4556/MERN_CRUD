@@ -11,15 +11,17 @@ app.use(bodyParser.json());
 app.use(cors());
 dotenv.config();
 
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT || 8000;
 const MONGOURL = process.env.MONGO_URL;
 const __dirname = path.resolve();
 
 app.use("/api", route);
 
-app.use(express.static(path.join(__dirname, "/client/build")));
-app.get('*', (_, res) => {
-  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, "../client/build")));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build", "index.html"));
 });
 
 mongoose
@@ -32,5 +34,3 @@ mongoose
     });
   })
   .catch((error) => console.log(error));
-
-app.use("/api", route);
