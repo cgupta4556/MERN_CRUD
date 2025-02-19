@@ -1,0 +1,36 @@
+import express from "express";
+import mongoose from "mongoose";
+import bodyParser from "body-parser";
+import dotenv from "dotenv";
+import route from "./routes/userRoute.js";
+import cors from "cors";
+import path from 'path';
+
+const app = express();
+app.use(bodyParser.json());
+app.use(cors());
+dotenv.config();
+
+const PORT = process.env.PORT || 7000;
+const MONGOURL = process.env.MONGO_URL;
+const __dirname = path.resolve();
+
+app.use("/api", route);
+
+app.use(express.static(path.join(__dirname, "/client/build")));
+app.get('*', (_, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+});
+
+mongoose
+  .connect(MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log("DB connected successfully.");
+
+    app.listen(PORT, () => {
+      console.log(`Server is running on port :${PORT}`);
+    });
+  })
+  .catch((error) => console.log(error));
+
+app.use("/api", route);
