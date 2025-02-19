@@ -25,7 +25,7 @@ app.get('*', (req, res) => {
 });
 
 mongoose
-  .connect(MONGOURL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(MONGOURL)
   .then(() => {
     console.log("DB connected successfully.");
 
