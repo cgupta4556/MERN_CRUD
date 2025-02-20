@@ -23,7 +23,11 @@ const UpdateUser = () => {
 
   useEffect(() => {
     axios
+<<<<<<< HEAD
       .get(`http://localhost:8000/api/user/${id}`)
+=======
+      .get(`https://mern-crud-code.onrender.com/api/user/${id}`)
+>>>>>>> 4686da0 (final deployment)
       .then((response) => {
         setUser(response.data);
       })
@@ -35,7 +39,11 @@ const UpdateUser = () => {
   const submitForm = async (e) => {
     e.preventDefault();
     await axios
+<<<<<<< HEAD
       .put(`http://localhost:8000/api/update/user/${id}`, user)
+=======
+      .put(`https://mern-crud-code.onrender.com/api/update/user/${id}`, user)
+>>>>>>> 4686da0 (final deployment)
       .then((response) => {
         toast.success(response.data.message, { position: "top-right" });
         navigate("/");

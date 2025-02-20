@@ -9,7 +9,11 @@ const User = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+<<<<<<< HEAD
         const response = await axios.get("http://localhost:8000/api/users");
+=======
+        const response = await axios.get("https://mern-crud-code.onrender.com/api/users");
+>>>>>>> 4686da0 (final deployment)
         setUsers(response.data);
       } catch (error) {
         console.log("Error while fetching data", error);
@@ -20,7 +24,11 @@ const User = () => {
 
   const deleteUser = async (userId) => {
     await axios
+<<<<<<< HEAD
       .delete(`http://localhost:8000/api/delete/user/${userId}`)
+=======
+      .delete(`https://mern-crud-code.onrender.com/api/delete/user/${userId}`)
+>>>>>>> 4686da0 (final deployment)
       .then((response) => {
         setUsers((prevUser) => prevUser.filter((user) => user._id !== userId));
         toast.success(response.data.message, { position: "top-right" });

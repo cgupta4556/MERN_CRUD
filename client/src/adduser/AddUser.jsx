@@ -23,7 +23,11 @@ const AddUser = () => {
   const submitForm = async (e) => {
     e.preventDefault();
     await axios
+<<<<<<< HEAD
       .post("http://localhost:8000/api/user", user)
+=======
+      .post("https://mern-crud-code.onrender.com/api/user", user)
+>>>>>>> 4686da0 (final deployment)
       .then((response) => {
         toast.success(response.data.message, { position: "top-right" });
         navigate("/");
